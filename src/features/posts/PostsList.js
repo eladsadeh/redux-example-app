@@ -9,7 +9,7 @@ function PostsList(props) {
     //         <p className='post-content'>{post.content.substring(0,100)}</p>
     //     </article>
     // ))
-    // console.log('posts:',renderedPosts);
+    console.log('posts:',posts);
     return (
       <section className="posts-list">
         <h2>Posts</h2>
