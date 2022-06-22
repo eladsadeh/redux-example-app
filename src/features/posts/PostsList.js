@@ -1,5 +1,7 @@
 import React from 'react';
+// read state data from redux store
 import {useSelector} from 'react-redux'
+import { Link } from 'react-router-dom'
 
 function PostsList(props) {
     const posts = useSelector(state => state.posts)
@@ -9,7 +11,7 @@ function PostsList(props) {
     //         <p className='post-content'>{post.content.substring(0,100)}</p>
     //     </article>
     // ))
-    // console.log('posts:',renderedPosts);
+    // console.log(useSelector(state => state));
     return (
       <section className="posts-list">
         <h2>Posts</h2>
@@ -18,6 +20,7 @@ function PostsList(props) {
           <article className="post-excerpt" key={post.id}>
             <h3>{post.title}</h3>
             <p className="post-content">{post.content.substring(0, 100)}</p>
+            <Link to={`/posts/${post.id}`} className='button muted-button'>View Post</Link>
           </article>
         ))}
       </section>
