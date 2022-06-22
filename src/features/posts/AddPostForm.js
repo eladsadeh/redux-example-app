@@ -16,14 +16,7 @@ function AddPostForm(props) {
   const onContentChanged = (e) => setContent(e.target.value)
   const onSavePostClicked = () => {
     if (title && content) {
-      dispatch(
-        postAdded({
-          id: nanoid(),
-          title,
-          content,
-        })
-      )
-
+      dispatch(postAdded(title, content))
       setTitle('')
       setContent('')
     }
