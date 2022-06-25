@@ -3,32 +3,41 @@ import React from 'react';
 import {useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 import { PostAuthor } from './PostAuthor';
+import { TimeAgo} from './TimeAgo'
 
 function PostsList(props) {
-    const posts = useSelector(state => state.posts)
-    // const renderedPosts = posts.map(post => (
-    //     <article className='post-excerpt' key={post.id}>
-    //         <h3>{post.title}</h3>
-    //         <p className='post-content'>{post.content.substring(0,100)}</p>
-    //     </article>
-    // ))
-    // console.log(useSelector(state => state));
-    return (
-      <section className="posts-list">
-        <h2>Posts</h2>
-        {/* {renderedPosts} */}
-        {posts.map((post) => (
-          <article className="post-excerpt" key={post.id}>
-            <h3>{post.title}</h3>
+  const posts = useSelector((state) => state.posts)
+  // Sort posts in reverse chronological order by datetime string
+  const orderedPosts = posts
+    .slice()
+    .sort((a, b) => b.date.localeCompare(a.date))
+
+  // const renderedPosts = posts.map(post => (
+  //     <article className='post-excerpt' key={post.id}>
+  //         <h3>{post.title}</h3>
+  //         <p className='post-content'>{post.content.substring(0,100)}</p>
+  //     </article>
+  // ))
+
+  return (
+    <section className="posts-list">
+      <h2>Posts</h2>
+      {/* {renderedPosts} */}
+      {orderedPosts.map((post) => (
+        <article className="post-excerpt" key={post.id}>
+          <h3>{post.title}</h3>
+          <div>
             <PostAuthor userId={post.user} />
-            <p className="post-content">{post.content.substring(0, 100)}</p>
-            <Link to={`/posts/${post.id}`} className="button muted-button">
-              View Post
-            </Link>
-          </article>
-        ))}
-      </section>
-    )
+            <TimeAgo timestamp={post.date} />
+          </div>
+          <p className="post-content">{post.content.substring(0, 100)}</p>
+          <Link to={`/posts/${post.id}`} className="button muted-button">
+            View Post
+          </Link>
+        </article>
+      ))}
+    </section>
+  )
 }
 
 export default PostsList;
