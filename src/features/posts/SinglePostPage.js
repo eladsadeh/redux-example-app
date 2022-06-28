@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
 import { PostAuthor } from './PostAuthor'
 import { TimeAgo } from './TimeAgo'
+import { ReactionButtons} from './ReactionButtons'
 
 function SinglePostPage(props) {
   //   console.log('props:', props)
@@ -13,7 +14,6 @@ function SinglePostPage(props) {
     state.posts.find((post) => post.id === postId)
   )
 
-  console.log(post)
   if (!post) {
     return (
       <section>
@@ -33,6 +33,7 @@ function SinglePostPage(props) {
         <Link to={`/editPost/${post.id}`} className="button">
           Edit Post
         </Link>
+        <ReactionButtons post={post} />
       </article>
     </section>
   )
