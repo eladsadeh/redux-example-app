@@ -11,7 +11,6 @@ import AddPostForm from './features/posts/AddPostForm'
 import  PostList from './features/posts/PostsList'
 import SinglePostPage from './features/posts/SinglePostPage'
 import EditPostForm from './features/posts/EditPostForm'
-import { Spinner } from './components/Spinner'
 
 function App() {
   return (

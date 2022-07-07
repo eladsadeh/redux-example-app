@@ -33,8 +33,6 @@ function PostsList(props) {
   const postStatus = useSelector((state) => state.posts.status)
   const error = useSelector((state) => state.posts.error)
 
-  console.log('status:', postStatus)
-
   useEffect(() => {
     if (postStatus === 'idle') {
       dispatch(fetchPosts())
@@ -42,8 +40,6 @@ function PostsList(props) {
   }, [postStatus, dispatch])
   let content
 
-  console.log(useSelector(state => state.posts))
-  
   if (postStatus === 'loading') {
     content = <Spinner text="Loading..." />
   } else if (postStatus === 'succeeded') {
