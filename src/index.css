@@ -200,7 +200,7 @@ button.reaction-button {
   background: linear-gradient(
     to right,
     var(--redux-color) 10%,
-    rgba(128, 0, 255, 0) 42%
+    rgba(0,0,0, 0) 42%
   );
   position: relative;
   -webkit-animation: load3 1.4s infinite linear;
